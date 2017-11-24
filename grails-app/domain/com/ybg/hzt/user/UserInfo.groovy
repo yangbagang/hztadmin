@@ -11,6 +11,8 @@ class UserInfo {
     String mobile
     String password
     String appToken = ""
+    String email = ""
+    String company = ""
 
     def beforeInsert() {
         encodePassword()
