@@ -23,6 +23,7 @@ apply plugin:"org.grails.grails-gsp"
 repositories {
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    maven { url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/" }
 }
 
 dependencies {
@@ -58,6 +59,12 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
     compile 'org.grails.plugins:spring-security-core:3.2.0'
+    compile "com.octo.captcha:jcaptcha:1.0"
+    compile "com.octo.captcha:jcaptcha-api:1.0"
+    compile "com.google.guava:guava:14.0.1"
+    compile 'org.grails.plugins:excel-export:2.0.1'
+    compile "com.gexin.platform:gexin-rp-sdk-http:4.0.1.2"
+    compile "com.gexin.platform:gexin-rp-sdk-template:4.0.0.5"
 }
 
 bootRun {
