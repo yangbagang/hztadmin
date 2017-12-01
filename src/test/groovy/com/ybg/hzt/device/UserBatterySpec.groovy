@@ -3,7 +3,7 @@ package com.ybg.hzt.device
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class UPSSpec extends Specification implements DomainUnitTest<UPS> {
+class UserBatterySpec extends Specification implements DomainUnitTest<UserBattery> {
 
     def setup() {
     }
