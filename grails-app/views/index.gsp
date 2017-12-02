@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>平台管理系统</title>
-    <meta name="description" content="平台管理系统">
+    <title>智慧电源管理系统</title>
+    <meta name="description" content="智慧电源管理系统">
     <meta name="author" content="杨拔纲">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The styles -->
@@ -47,7 +47,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="${createLink(uri: '/')}"> <asset:image alt="Charisma Logo" src="logo20.png" class="hidden-xs"/>
-            <span>平台管理系统</span></a>
+            <span>智慧电源管理系统</span></a>
 
         <!-- user dropdown starts -->
         <div class="btn-group pull-right">
@@ -112,65 +112,17 @@
                         </li>
                         </sec:access>
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 基础设定</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 用户管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a class="ajax-link" href="${createLink(uri: '/baseAreaInfo')}">省市区列表</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/goodsTypeOne')}">大类管理</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/goodsTypeTwo')}">小类管理</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/goodsTypeLabel')}">标签管理</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/goodsBaseInfo')}">商品基本信息</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/userInfo')}">用户管理</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 合作伙伴</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 电池管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a class="ajax-link" href="${createLink(uri: '/partnerBaseInfo')}">基本信息</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/partnerUserInfo')}">登录账号</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/partnerAuthorityInfo')}">角色设置</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/partnerUserAuthority')}">权限设置</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/partnerUserStore')}">范围设置</a></li>
-                                %{--<li><a class="ajax-link" href="${createLink(uri: '/systemUserRole')}">收益设置</a></li>--}%
-                                %{--<li><a class="ajax-link" href="${createLink(uri: '/partnerAccount')}">结算信息</a></li>--}%
-                                %{--<li><a class="ajax-link" href="${createLink(uri: '/partnerAccountLog')}">结算记录</a></li>--}%
-                                <li><a class="ajax-link" href="${createLink(uri: '/partnerUserOperationLog')}">操作记录</a></li>
-                            </ul>
-                        </li>
-                        <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 主题店</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a class="ajax-link" href="${createLink(uri: '/buildingBaseInfo')}">楼宇签约</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/themeStoreBaseInfo')}">主题店开业</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/themeStoreOfPartner')}">绑定伙伴</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/themeStoreOfPartnerHistory')}">绑定记录</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/themeStoreGoodsInfo')}">定制商品</a></li>
-                            </ul>
-                        </li>
-                        <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 机器设备</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a class="ajax-link" href="${createLink(uri: '/vendMachineInfo')}">设备管理</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/vendMachineInfoErrorInfo')}">轨道错误</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/vendMachineInfo/list2')}">离线设备</a></li>
-                            </ul>
-                        </li>
-                        <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 营销管理</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a class="ajax-link" href="${createLink(uri: '/coupon')}">优惠券</a></li>
-                            </ul>
-                        </li>
-                        <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 实时数据</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a class="ajax-link" href="${createLink(uri: '/orderInfo')}">订单记录</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/orderDetail')}">商品记录</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/transactionInfo')}">支付记录</a></li>
-                            </ul>
-                        </li>
-                        <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 测试</span></a>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a class="ajax-link" href="${createLink(uri: '/orderInfo/test')}">订单测试</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/battery')}">电池管理</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/userBattery')}">用户电池</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/batteryHistoryData')}">电池数据</a></li>
                             </ul>
                         </li>
                     </ul>
