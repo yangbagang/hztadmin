@@ -115,6 +115,7 @@
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> 用户管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a class="ajax-link" href="${createLink(uri: '/userInfo')}">用户管理</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/userBattery')}">用户电池</a></li>
                             </ul>
                         </li>
                         <li class="accordion">

@@ -1,16 +1,16 @@
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="#">系统管理</a>
+            <a href="#">用户管理</a>
         </li>
         <li>
-            <a href="#">系统角色</a>
+            <a href="#">用户信息</a>
         </li>
     </ul>
 </div>
 <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><i class="glyphicon glyphicon-user"></i> 系统角色</h2>
+        <h2><i class="glyphicon glyphicon-user"></i> 用户信息</h2>
         <div class="box-icon">
             <a href="javascript:addInfo();" class="btn btn-plus btn-round btn-default"><i
                     class="glyphicon glyphicon-plus"></i></a>
@@ -26,13 +26,13 @@
         <div class="form-group">
             <label class="control-label" for="name">名称:</label>
             <input type="text" class="form-control" id="name">
-            <input type="button" class="btn btn-primary" value="查询" id="sercher"/>
+            <input type="button" class="btn btn-primary" value="查询" id="searcher"/>
         </div>
     </form><br />
     <div id="msgInfo" class="box-content alerts"></div>
     <table class="table table-striped table-bordered search_table" id="dataTable"></table>
 </div>
-</div>
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
 
@@ -56,7 +56,7 @@
             "serverSide": true,
             "bAutoWidth": true,
             "ajax": {
-                "url":"systemRole/list",
+                "url":"userInfo/list",
                 "dataSrc": "data",
                 "data": function ( d ) {
                     //添加额外的参数传给服务器
@@ -65,13 +65,10 @@
             },
             "order": [[0, 'asc']], // 默认排序(第三列降序, asc升序)
             "columns": [
-                { "title": "权限", "data" : "authority", "orderable": true, "searchable": false },
-                { "title": "角色名称", "data" : "roleName", "orderable": true, "searchable": false },
-                { "title": "备注", "data" : "remark", "orderable": true, "searchable": false },
-                { "title": "创建者", "data" : "createUser", "orderable": true, "searchable": false },
-                { "title": "创建时间", "data" : "createTime", "orderable": true, "searchable": false },
-                { "title": "更新者", "data" : "updateUser", "orderable": true, "searchable": false },
-                { "title": "更新时间", "data" : "updateTime", "orderable": true, "searchable": false },
+                { "title": "名称", "data" : "name", "orderable": true, "searchable": false },
+                { "title": "手机号", "data" : "mobile", "orderable": true, "searchable": false },
+                { "title": "Email", "data" : "email", "orderable": true, "searchable": false },
+                { "title": "公司", "data" : "company", "orderable": true, "searchable": false },
                 { "title": "操作", "data" : function (data) {
                     return '<a class="btn btn-success" href="javascript:showInfo('+data.id+');" title="查看">' +
                             '<i class="glyphicon glyphicon-zoom-in icon-white"></i></a>&nbsp;&nbsp;' +
@@ -99,7 +96,7 @@
         });
         gridTable = table;
         //查询 重新加载
-        $("#sercher").click(function(){
+        $("#searcher").click(function(){
             table.ajax.reload(null, false);
         });
 
@@ -109,21 +106,29 @@
         var content = "" +
                 '<div class="modal-header">' +
                 '<button type="button" class="close" data-dismiss="modal">×</button>' +
-                '<h3>新建角色</h3>' +
+                '<h3>新建用户</h3>' +
                 '</div>' +
                 '<div class="modal-body">' +
                 '<form id="infoForm" role="form">' +
                 '<div class="form-group">' +
-                '<label for="authority">权限</label>' +
-                '<input type="text" class="form-control" id="authority" name="authority" placeholder="权限英文值,非随意值。">' +
+                '<label for="name">名称</label>' +
+                '<input type="text" class="form-control" id="name" name="name" placeholder="用户名称。">' +
                 '</div>' +
                 '<div class="form-group">' +
-                '<label for="roleName">角色名</label>' +
-                '<input type="text" class="form-control" id="roleName" name="roleName" placeholder="角色名">' +
+                '<label for="mobile">手机</label>' +
+                '<input type="number" class="form-control" id="mobile" name="mobile" placeholder="手机号">' +
                 '</div>' +
                 '<div class="form-group">' +
-                '<label for="remark">备注</label>' +
-                '<input type="text" class="form-control" id="remark" name="remark" placeholder="备注">' +
+                '<label for="password">密码</label>' +
+                '<input type="password" class="form-control" id="password" name="password" placeholder="密码">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label for="email">Email</label>' +
+                '<input type="email" class="form-control" id="email" name="email" placeholder="Email">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label for="company">公司</label>' +
+                '<input type="text" class="form-control" id="company" name="company" placeholder="所在公司名称">' +
                 '</div>' +
                 '</form>' +
                 '</div>' +
@@ -137,7 +142,7 @@
     }
 
     function showInfo(id) {
-        var url = '${createLink(controller: "systemRole", action: "show")}';
+        var url = '${createLink(controller: "userInfo", action: "show")}';
         $.ajax({
             type: "GET",
             url: url,
@@ -146,37 +151,25 @@
                 var content = "" +
                         '<div class="modal-header">' +
                         '<button type="button" class="close" data-dismiss="modal">×</button>' +
-                        '<h3>角色详情</h3>' +
+                        '<h3>用户信息详情</h3>' +
                         '</div>' +
                         '<div class="modal-body">' +
                         '<form id="infoForm" role="form">' +
                         '<div class="form-group">' +
-                        '<label for="authority">权限值</label>' +
-                        '<input type="text" class="form-control" id="authority" name="authority" readonly="readonly" value="'+result.authority+'">' +
+                        '<label for="name">名称</label>' +
+                        '<input type="text" class="form-control" id="name" name="name" readonly="readonly" value="'+result.name+'">' +
                         '</div>' +
                         '<div class="form-group">' +
-                        '<label for="roleName">角色名</label>' +
-                        '<input type="text" class="form-control" id="roleName" name="roleName" readonly="readonly" value="'+result.roleName+'">' +
+                        '<label for="mobile">手机号</label>' +
+                        '<input type="number" class="form-control" id="mobile" name="mobile" readonly="readonly" value="'+result.mobile+'">' +
                         '</div>' +
                         '<div class="form-group">' +
-                        '<label for="remark">备注</label>' +
-                        '<input type="text" class="form-control" id="remark" name="remark" readonly="readonly" value="'+result.remark+'">' +
+                        '<label for="email">Email</label>' +
+                        '<input type="email" class="form-control" id="remark" name="remark" readonly="readonly" value="'+result.email+'">' +
                         '</div>' +
                         '<div class="form-group">' +
-                        '<label for="createUser">创建者</label>' +
-                        '<input type="text" class="form-control" id="createUser" name="createUser" readonly="readonly" value="'+result.createUser+'">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label for="createTime">创建时间</label>' +
-                        '<input type="text" class="form-control" id="createTime" name="createTime" readonly="readonly" value="'+result.createTime+'">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label for="updateUser">更新者</label>' +
-                        '<input type="text" class="form-control" id="updateUser" name="updateUser" readonly="readonly" value="'+result.updateUser+'">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label for="updateTime">更新时间</label>' +
-                        '<input type="text" class="form-control" id="updateTime" name="updateTime" readonly="readonly" value="'+result.updateTime+'">' +
+                        '<label for="company">公司</label>' +
+                        '<input type="text" class="form-control" id="company" name="company" readonly="readonly" value="'+result.company+'">' +
                         '</div>' +
                         '</form>' +
                         '</div>' +
@@ -194,7 +187,7 @@
     }
 
     function editInfo(id) {
-        var url = '${createLink(controller: "systemRole", action: "show")}';
+        var url = '${createLink(controller: "userInfo", action: "show")}';
         $.ajax({
             type: "GET",
             url: url,
@@ -203,22 +196,30 @@
                 var content = "" +
                         '<div class="modal-header">' +
                         '<button type="button" class="close" data-dismiss="modal">×</button>' +
-                        '<h3>编辑角色</h3>' +
+                        '<h3>编辑用户信息</h3>' +
                         '</div>' +
                         '<div class="modal-body">' +
                         '<form id="infoForm" role="form">' +
                         '<input type="hidden" id="id" name="id" value="' + result.id + '">' +
                         '<div class="form-group">' +
-                        '<label for="authority">权限值</label>' +
-                        '<input type="text" class="form-control" id="authority" name="authority" value="'+result.authority+'">' +
+                        '<label for="name">名称</label>' +
+                        '<input type="text" class="form-control" id="name" name="name" value="'+result.name+'">' +
                         '</div>' +
                         '<div class="form-group">' +
-                        '<label for="roleName">角色名</label>' +
-                        '<input type="text" class="form-control" id="roleName" name="roleName" value="'+result.roleName+'">' +
+                        '<label for="mobile">手机</label>' +
+                        '<input type="number" class="form-control" id="mobile" name="mobile" value="'+result.mobile+'">' +
                         '</div>' +
                         '<div class="form-group">' +
-                        '<label for="remark">备注</label>' +
-                        '<input type="text" class="form-control" id="remark" name="remark" value="'+result.remark+'">' +
+                        '<label for="password">密码</label>' +
+                        '<input type="password" class="form-control" id="password" name="password" value="'+result.password+'">' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                        '<label for="email">Email</label>' +
+                        '<input type="email" class="form-control" id="email" name="email" value="'+result.email+'">' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                        '<label for="company">公司</label>' +
+                        '<input type="text" class="form-control" id="company" name="company" value="'+result.company+'">' +
                         '</div>' +
                         '</form>' +
                         '</div>' +
@@ -255,7 +256,7 @@
     }
 
     function postAjaxRemove(id) {
-        var url = '${createLink(controller: "systemRole", action: "delete")}/' + id;
+        var url = '${createLink(controller: "userInfo", action: "delete")}/' + id;
         $.ajax({
             type: "DELETE",
             dataType: "json",
@@ -295,7 +296,7 @@
     }
 
     function postAjaxForm() {
-        var url = '${createLink(controller: "systemRole", action: "save")}';
+        var url = '${createLink(controller: "userInfo", action: "save")}';
         $.ajax({
             type: "POST",
             dataType: "json",
