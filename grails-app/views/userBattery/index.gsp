@@ -183,7 +183,7 @@
     }
 
     function postAjaxForm() {
-        var url = '${createLink(controller: "userBattery", action: "save")}';
+        var url = '${createLink(controller: "userBattery", action: "addUserBattery")}';
         $.ajax({
             type: "POST",
             dataType: "json",

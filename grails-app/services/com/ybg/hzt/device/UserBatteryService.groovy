@@ -6,16 +6,16 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class UserBatteryService {
 
-    def addUserBattery(Long userId, String[] batteryIds) {
-        if (userId && batteryIds) {
-            def userInfo = UserInfo.get(userId)
-            for (String batteryId in batteryIds) {
-                def battery = Battery.get(Long.valueOf(batteryId))
-                def userBattery = UserBattery.findByUserInfoAndBattery(userInfo, battery)
+    def addUserBattery(String mobile, String uid) {
+        if (mobile && uid) {
+            def userInfo = UserInfo.findByMobile(mobile)
+            if (userInfo) {
+                def userBattery = UserBattery.findByUserInfoAndUid(userInfo, uid)
                 if (!userBattery) {
                     userBattery = new UserBattery()
                     userBattery.userInfo = userInfo
-                    userBattery.battery = battery
+                    userBattery.uid = uid
+
                     userBattery.save flush: true
                 }
             }

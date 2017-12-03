@@ -31,10 +31,10 @@ class UserBatteryController {
     }
 
     @Transactional
-    def addUserBattery(Long userId) {
+    def addUserBattery(String mobile, String uid) {
         def result = [:]
 
-        userBatteryService.addUserBattery(userId, params.batteryList)
+        userBatteryService.addUserBattery(mobile, uid)
 
         result.success = true
         result.msg = ""
@@ -42,11 +42,9 @@ class UserBatteryController {
     }
 
     @Transactional
-    def delete(Long userId, Long batteryId) {
+    def delete(Long id) {
         def result = [:]
-        def userInfo = UserInfo.get(userId)
-        def battery = Battery.get(batteryId)
-        def userBattery = UserBattery.findByUserInfoAndBattery(userInfo, battery)
+        def userBattery = UserBattery.get(id)
         if (userBattery == null) {
             result.success = false
             result.msg = "userBattery is null."
