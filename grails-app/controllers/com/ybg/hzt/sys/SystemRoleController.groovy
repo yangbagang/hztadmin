@@ -3,7 +3,7 @@ package com.ybg.hzt.sys
 import com.ybg.hzt.vo.AjaxPagingVo
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
-import grails.transaction.Transactional
+import org.springframework.transaction.annotation.Transactional
 
 @Transactional(readOnly = true)
 @Secured(['ROLE_SUPER_ADMIN', 'ROLE_SYSTEM_ADMIN'])

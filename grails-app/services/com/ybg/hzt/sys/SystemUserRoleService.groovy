@@ -1,6 +1,6 @@
 package com.ybg.hzt.sys
 
-import grails.transaction.Transactional
+import org.springframework.transaction.annotation.Transactional
 
 @Transactional
 class SystemUserRoleService {

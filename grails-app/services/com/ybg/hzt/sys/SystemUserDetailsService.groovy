@@ -4,10 +4,10 @@ import com.ybg.hzt.security.SystemUserDetails
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.userdetails.GrailsUserDetailsService
 import grails.plugin.springsecurity.userdetails.NoStackUsernameNotFoundException
-import grails.transaction.Transactional
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UsernameNotFoundException
+import org.springframework.transaction.annotation.Transactional
 
 @Transactional
 class SystemUserDetailsService implements GrailsUserDetailsService{
