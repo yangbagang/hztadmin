@@ -10,4 +10,5 @@ class UserBattery {
     }
 
     String uid = ""
+
 }

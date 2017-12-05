@@ -24,7 +24,7 @@
 <div class="box-content">
     <form class="form-inline" role="form" action="#">
         <div class="form-group">
-            <label class="control-label" for="name">名称:</label>
+            <label class="control-label" for="name">手机号或站号:</label>
             <input type="text" class="form-control" id="name">
             <input type="button" class="btn btn-primary" value="查询" id="searcher"/>
         </div>
@@ -65,9 +65,9 @@
             },
             "order": [[0, 'asc']], // 默认排序(第三列降序, asc升序)
             "columns": [
-                { "title": "用户名称", "data" : "authority", "orderable": true, "searchable": false },
-                { "title": "手机号", "data" : "roleName", "orderable": true, "searchable": false },
-                { "title": "站号", "data" : "remark", "orderable": true, "searchable": false },
+                { "title": "用户名称", "data" : "name", "orderable": false, "searchable": false },
+                { "title": "手机号", "data" : "mobile", "orderable": false, "searchable": false },
+                { "title": "站号", "data" : "uid", "orderable": true, "searchable": false },
                 { "title": "操作", "data" : function (data) {
                     return '<a class="btn btn-danger" href="javascript:removeInfo('+data.id+');" title="删除">' +
                             '<i class="glyphicon glyphicon-trash icon-white"></i></a>';

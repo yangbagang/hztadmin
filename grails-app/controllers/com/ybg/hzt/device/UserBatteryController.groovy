@@ -16,16 +16,24 @@ class UserBatteryController {
     }
 
     def list() {
-        def data = UserBattery.list(params)
-        def count = UserBattery.count()
+        def c = UserBattery.createCriteria()
+        def data = c.list(max: params.length, offset: params.start) {
+            or {
+                userInfo {
+                    like("mobile", "%" + params.name + "%")
+                }
+                like("uid", "%" + params.name + "%")
+            }
+            order("id", "desc")
+        }
 
         def result = new AjaxPagingVo()
         result.data = data
         result.draw = Integer.valueOf(params.draw)
         result.error = ""
         result.success = true
-        result.recordsTotal = count
-        result.recordsFiltered = count
+        result.recordsTotal = data.totalCount
+        result.recordsFiltered = data.totalCount
         render result as JSON
     }
 
