@@ -7,12 +7,12 @@ class UserInfo {
     static constraints = {
     }
 
-    String name
-    String mobile
-    String password
-    String appToken = ""
-    String email = ""
-    String company = ""
+    String name//用户名称
+    String mobile//手机号
+    String password//密码
+    String appToken = ""//推送消息预留
+    String email = ""//Email
+    String company = ""//公司名称
 
     def beforeInsert() {
         encodePassword()
