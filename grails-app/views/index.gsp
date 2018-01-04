@@ -115,15 +115,16 @@
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> 用户管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a class="ajax-link" href="${createLink(uri: '/userInfo')}">用户管理</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/userBattery')}">用户电池</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/userBattery')}">绑定设备</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 电池管理</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 设备管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a class="ajax-link" href="${createLink(uri: '/battery')}">电池管理</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/userBattery')}">用户电池</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/batteryHistoryData')}">电池数据</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/userBattery')}">绑定设备</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/batterySystem')}">电池系统</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/DCSystem')}">UPS系统</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/UPSSystem')}">直流系统</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -181,7 +182,7 @@
     <hr>
 
     <footer class="row">
-        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; 智慧电源管理系统 2017 </p>
+        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; 智慧电源管理系统 2018 </p>
 
         <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
                 href="mailto:81667842@qq.com">YBG</a></p>

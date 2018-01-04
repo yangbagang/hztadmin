@@ -6,6 +6,7 @@ class DCSystem {
     }
 
     String uid = ""//为序列号即为“站号”
+    String name = ""//用户自定义名称
     Integer lac = 0//基站定位，app定位地图
     Integer cid = 0//基站定位，app定位地图
     Integer num = 0//一个站内，多个被采集对象的序号

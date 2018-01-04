@@ -24,7 +24,7 @@
 <div class="box-content">
     <form class="form-inline" role="form" action="#">
         <div class="form-group">
-            <label class="control-label" for="name">手机号或站号:</label>
+            <label class="control-label" for="name">手机号或UID:</label>
             <input type="text" class="form-control" id="name">
             <input type="button" class="btn btn-primary" value="查询" id="searcher"/>
         </div>
@@ -67,7 +67,7 @@
             "columns": [
                 { "title": "用户名称", "data" : "name", "orderable": false, "searchable": false },
                 { "title": "手机号", "data" : "mobile", "orderable": false, "searchable": false },
-                { "title": "站号", "data" : "uid", "orderable": true, "searchable": false },
+                { "title": "UID", "data" : "uid", "orderable": true, "searchable": false },
                 { "title": "操作", "data" : function (data) {
                     return '<a class="btn btn-danger" href="javascript:removeInfo('+data.id+');" title="删除">' +
                             '<i class="glyphicon glyphicon-trash icon-white"></i></a>';
@@ -110,8 +110,8 @@
                 '<input type="number" class="form-control" id="mobile" name="mobile" placeholder="权限数字">' +
                 '</div>' +
                 '<div class="form-group">' +
-                '<label for="uid">站号</label>' +
-                '<input type="number" class="form-control" id="uid" name="uid" placeholder="站号">' +
+                '<label for="uid">UID</label>' +
+                '<input type="number" class="form-control" id="uid" name="uid" placeholder="UID">' +
                 '</div>' +
                 '</form>' +
                 '</div>' +

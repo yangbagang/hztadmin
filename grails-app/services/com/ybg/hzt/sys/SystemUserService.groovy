@@ -14,7 +14,7 @@ class SystemUserService {
             def user = new SystemUser()
             user.username = "ybg"
             user.realName = "ybg"
-            user.password = "ybg@2017"
+            user.password = "ybg@2018"
             user.enabled = true
             user.accountExpired = false
             user.accountLocked = false
