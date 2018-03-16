@@ -111,7 +111,7 @@
                 '</div>' +
                 '<div class="form-group">' +
                 '<label for="uid">UID</label>' +
-                '<input type="number" class="form-control" id="uid" name="uid" placeholder="UID">' +
+                '<input class="form-control" id="uid" name="uid" placeholder="UID">' +
                 '</div>' +
                 '</form>' +
                 '</div>' +
