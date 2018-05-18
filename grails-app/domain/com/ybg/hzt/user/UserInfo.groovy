@@ -13,6 +13,9 @@ class UserInfo {
     String appToken = ""//推送消息预留
     String email = ""//Email
     String company = ""//公司名称
+    String code = ""//用户编号
+    Integer sideName = 0//站点数量
+    Integer installedCapacity = 0//装机容量
 
     def beforeInsert() {
         encodePassword()
