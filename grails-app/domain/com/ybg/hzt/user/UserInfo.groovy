@@ -14,7 +14,7 @@ class UserInfo {
     String email = ""//Email
     String company = ""//公司名称
     String code = ""//用户编号
-    Integer sideName = 0//站点数量
+    Integer sideNum = 0//站点数量
     Integer installedCapacity = 0//装机容量
 
     def beforeInsert() {

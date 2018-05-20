@@ -1,16 +1,16 @@
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="#">用户管理</a>
+            <a href="#">客户管理</a>
         </li>
         <li>
-            <a href="#">用户信息</a>
+            <a href="#">客户信息</a>
         </li>
     </ul>
 </div>
 <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><i class="glyphicon glyphicon-user"></i> 用户信息</h2>
+        <h2><i class="glyphicon glyphicon-user"></i> 客户信息</h2>
         <div class="box-icon">
             <a href="javascript:addInfo();" class="btn btn-plus btn-round btn-default"><i
                     class="glyphicon glyphicon-plus"></i></a>
@@ -63,9 +63,10 @@
                     d.name = $("#name").val();
                 }
             },
-            "order": [[0, 'asc']], // 默认排序(第三列降序, asc升序)
+            "order": [[1, 'asc']], // 默认排序(第三列降序, asc升序)
             "columns": [
                 { "title": "名称", "data" : "name", "orderable": true, "searchable": false },
+                { "title": "编号", "data" : "code", "orderable": true, "searchable": false },
                 { "title": "手机号", "data" : "mobile", "orderable": true, "searchable": false },
                 { "title": "Email", "data" : "email", "orderable": true, "searchable": false },
                 { "title": "公司", "data" : "company", "orderable": true, "searchable": false },
@@ -103,136 +104,42 @@
     });
 
     function addInfo() {
-        var content = "" +
-                '<div class="modal-header">' +
-                '<button type="button" class="close" data-dismiss="modal">×</button>' +
-                '<h3>新建用户</h3>' +
-                '</div>' +
-                '<div class="modal-body">' +
-                '<form id="infoForm" role="form">' +
-                '<div class="form-group">' +
-                '<label for="name">名称</label>' +
-                '<input type="text" class="form-control" id="name" name="name" placeholder="用户名称。">' +
-                '</div>' +
-                '<div class="form-group">' +
-                '<label for="mobile">手机</label>' +
-                '<input type="number" class="form-control" id="mobile" name="mobile" placeholder="手机号">' +
-                '</div>' +
-                '<div class="form-group">' +
-                '<label for="password">密码</label>' +
-                '<input type="password" class="form-control" id="password" name="password" placeholder="密码">' +
-                '</div>' +
-                '<div class="form-group">' +
-                '<label for="email">Email</label>' +
-                '<input type="email" class="form-control" id="email" name="email" placeholder="Email">' +
-                '</div>' +
-                '<div class="form-group">' +
-                '<label for="company">公司</label>' +
-                '<input type="text" class="form-control" id="company" name="company" placeholder="所在公司名称">' +
-                '</div>' +
-                '</form>' +
-                '</div>' +
-                '<div class="modal-footer">' +
-                '<a href="#" class="btn btn-default" data-dismiss="modal">关闭</a>' +
-                '<a href="javascript:postAjaxForm();" class="btn btn-primary">保存</a>' +
-                '</div>';
-        $("#modal-content").html("");
-        $("#modal-content").html(content);
-        $('#myModal').modal('show');
+        var url = '${createLink(controller: "userInfo", action: "create")}';
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (result) {
+                $("#modal-content").html("");
+                $("#modal-content").html(result);
+                $('#myModal').modal('show');
+            }
+        });
     }
 
     function showInfo(id) {
-        var url = '${createLink(controller: "userInfo", action: "show")}';
+        var url = '${createLink(controller: "userInfo", action: "show")}/' + id;
         $.ajax({
             type: "GET",
             url: url,
             data: "id=" + id,
             success: function (result) {
-                var content = "" +
-                        '<div class="modal-header">' +
-                        '<button type="button" class="close" data-dismiss="modal">×</button>' +
-                        '<h3>用户信息详情</h3>' +
-                        '</div>' +
-                        '<div class="modal-body">' +
-                        '<form id="infoForm" role="form">' +
-                        '<div class="form-group">' +
-                        '<label for="name">名称</label>' +
-                        '<input type="text" class="form-control" id="name" name="name" readonly="readonly" value="'+result.name+'">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label for="mobile">手机号</label>' +
-                        '<input type="number" class="form-control" id="mobile" name="mobile" readonly="readonly" value="'+result.mobile+'">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label for="email">Email</label>' +
-                        '<input type="email" class="form-control" id="remark" name="remark" readonly="readonly" value="'+result.email+'">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label for="company">公司</label>' +
-                        '<input type="text" class="form-control" id="company" name="company" readonly="readonly" value="'+result.company+'">' +
-                        '</div>' +
-                        '</form>' +
-                        '</div>' +
-                        '<div class="modal-footer">' +
-                        '<a href="#" class="btn btn-default" data-dismiss="modal">关闭</a>' +
-                        '</div>';
                 $("#modal-content").html("");
-                $("#modal-content").html(content);
+                $("#modal-content").html(result);
                 $('#myModal').modal('show');
-            },
-            error: function (data) {
-                showErrorInfo(data.responseText);
             }
         });
     }
 
     function editInfo(id) {
-        var url = '${createLink(controller: "userInfo", action: "show")}';
+        var url = '${createLink(controller: "userInfo", action: "edit")}/' + id;
         $.ajax({
             type: "GET",
             url: url,
             data: "id=" + id,
             success: function (result) {
-                var content = "" +
-                        '<div class="modal-header">' +
-                        '<button type="button" class="close" data-dismiss="modal">×</button>' +
-                        '<h3>编辑用户信息</h3>' +
-                        '</div>' +
-                        '<div class="modal-body">' +
-                        '<form id="infoForm" role="form">' +
-                        '<input type="hidden" id="id" name="id" value="' + result.id + '">' +
-                        '<div class="form-group">' +
-                        '<label for="name">名称</label>' +
-                        '<input type="text" class="form-control" id="name" name="name" value="'+result.name+'">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label for="mobile">手机</label>' +
-                        '<input type="number" class="form-control" id="mobile" name="mobile" value="'+result.mobile+'">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label for="password">密码</label>' +
-                        '<input type="password" class="form-control" id="password" name="password" value="'+result.password+'">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label for="email">Email</label>' +
-                        '<input type="email" class="form-control" id="email" name="email" value="'+result.email+'">' +
-                        '</div>' +
-                        '<div class="form-group">' +
-                        '<label for="company">公司</label>' +
-                        '<input type="text" class="form-control" id="company" name="company" value="'+result.company+'">' +
-                        '</div>' +
-                        '</form>' +
-                        '</div>' +
-                        '<div class="modal-footer">' +
-                        '<a href="#" class="btn btn-default" data-dismiss="modal">关闭</a>' +
-                        '<a href="javascript:postAjaxForm();" class="btn btn-primary">更新</a>' +
-                        '</div>';
                 $("#modal-content").html("");
-                $("#modal-content").html(content);
+                $("#modal-content").html(result);
                 $('#myModal').modal('show');
-            },
-            error: function (data) {
-                showErrorInfo(data.responseText);
             }
         });
     }

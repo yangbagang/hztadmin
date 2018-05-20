@@ -10,10 +10,12 @@ class UserInfoController {
 
     static allowedMethods = [save: "POST", delete: "DELETE"]
 
-    def springSecurityService
-
     def index() {
         //render html for ajax
+    }
+
+    def create() {
+
     }
 
     def list() {
@@ -31,7 +33,11 @@ class UserInfoController {
     }
 
     def show(UserInfo userInfo) {
-        render userInfo as JSON
+        [userInfo: userInfo]
+    }
+
+    def edit(UserInfo userInfo) {
+        [userInfo: userInfo]
     }
 
     @Transactional
