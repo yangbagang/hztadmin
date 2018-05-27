@@ -8,7 +8,6 @@ import org.grails.datastore.mapping.engine.event.PostDeleteEvent
 import org.grails.datastore.mapping.engine.event.PostInsertEvent
 import org.grails.datastore.mapping.engine.event.PostUpdateEvent
 
-@CompileStatic
 class UserBatteryUpdateListener {
 
     @Listener(UserBattery)
