@@ -1,6 +1,6 @@
 package com.ybg.hzt.device
 
-class DeviceValue {
+class DeviceHistoryValue {
 
     static constraints = {
     }

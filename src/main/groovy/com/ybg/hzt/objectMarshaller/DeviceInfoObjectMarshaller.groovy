@@ -21,7 +21,7 @@ class DeviceInfoObjectMarshaller implements ObjectMarshaller<JSON> {
                 .key("uid").value(object.uid)
                 .key('name').value(object.name)
                 .key('installedCapacity').value(object.installedCapacity)
-                .key('catalogName').value(object.deviceCatalog.name)
+                .key('catalogName').value(object.deviceCatalog?.name)
         writer.endObject()
     }
 
