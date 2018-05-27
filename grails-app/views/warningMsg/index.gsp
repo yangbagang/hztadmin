@@ -4,16 +4,14 @@
             <a href="#">设备管理</a>
         </li>
         <li>
-            <a href="#">电池系统</a>
+            <a href="#">告警信息</a>
         </li>
     </ul>
 </div>
 <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><i class="glyphicon glyphicon-user"></i> 电池系统</h2>
+        <h2><i class="glyphicon glyphicon-user"></i> 告警信息</h2>
         <div class="box-icon">
-            <a href="#" class="btn btn-plus btn-round btn-default"><i
-                    class="glyphicon glyphicon-plus"></i></a>
             <a href="#" class="btn btn-minimize btn-round btn-default"><i
                     class="glyphicon glyphicon-chevron-up"></i></a>
             <a href="#" class="btn btn-close btn-round btn-default"><i
@@ -22,13 +20,6 @@
     </div>
 </div>
 <div class="box-content">
-    <form class="form-inline" role="form" action="#">
-        <div class="form-group">
-            <label class="control-label" for="name">UID:</label>
-            <input type="text" class="form-control" id="name">
-            <input type="button" class="btn btn-primary" value="查询" id="searcher"/>
-        </div>
-    </form><br />
     <div id="msgInfo" class="box-content alerts"></div>
     <table class="table table-striped table-bordered search_table" id="dataTable"></table>
 </div>
@@ -55,21 +46,28 @@
             "serverSide": true,
             "bAutoWidth": true,
             "ajax": {
-                "url":"batterySystem/list",
+                "url":"warningMsg/list",
                 "dataSrc": "data",
                 "data": function ( d ) {
                     //添加额外的参数传给服务器
-                    d.uid = $("#name").val();
+                    d.name = $("#name").val();
                 }
             },
-            "order": [[4, 'desc']], // 默认排序(第四列降序)
+            "order": [[5, 'desc']], // 默认排序(第三列降序, asc升序)
             "columns": [
                 { "title": "UID", "data" : "uid", "orderable": true, "searchable": false },
-                { "title": "名称", "data" : "name", "orderable": true, "searchable": false },
-                { "title": "电压", "data" : "btv", "orderable": true, "searchable": false },
-                { "title": "电流", "data" : "bi", "orderable": true, "searchable": false },
-                { "title": "更新时间", "data" : "createTime", "orderable": true, "searchable": false },
-                { "title": "报警", "data" : "alm", "orderable": true, "searchable": false }
+                { "title": "NUM", "data" : "num", "orderable": true, "searchable": false },
+                { "title": "告警项", "data" : "itemName", "orderable": true, "searchable": false },
+                { "title": "告警值", "data" : "itemValue", "orderable": false, "searchable": false },
+                { "title": "标志", "data" : function (data) {
+                        return data.flag == 1 ? "过高" : "过低";
+                    }, "orderable": false, "searchable": false },
+                { "title": "发生时间", "data" : "createTime", "orderable": true, "searchable": false },
+                { "title": "是否己读", "data" : function (data) {
+                        return data.hasRead == 1 ? "己读" : "未读";
+                    }, "orderable": false, "searchable": false },
+                { "title": "阅读者", "data" : "userName", "orderable": true, "searchable": false },
+                { "title": "阅读时间", "data" : "readTime", "orderable": true, "searchable": false }
             ],
             "language": {
                 "zeroRecords": "没有数据",
@@ -88,10 +86,6 @@
             }
         });
         gridTable = table;
-        //查询 重新加载
-        $("#searcher").click(function(){
-            table.ajax.reload(null, false);
-        });
-
     });
+
 </script>

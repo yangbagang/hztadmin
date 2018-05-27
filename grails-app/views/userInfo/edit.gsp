@@ -6,6 +6,7 @@
 
 <div class="modal-body">
     <form id="infoForm" role="form">
+        <input type="hidden" id="id" name="id" value="${userInfo.id}">
         <div class="form-group">
             <label for="name">名称</label>
             <input type="text" class="form-control" id="name" name="name"  value="${userInfo.name}">

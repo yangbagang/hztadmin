@@ -1,3 +1,4 @@
+import com.ybg.hzt.device.UserBatteryUpdateListener
 import com.ybg.hzt.sys.SystemUserDetailsService
 import com.ybg.hzt.sys.UserPasswordEncoderListener
 
@@ -5,4 +6,5 @@ import com.ybg.hzt.sys.UserPasswordEncoderListener
 beans = {
     userDetailsService(SystemUserDetailsService)
     userPasswordEncoderListener(UserPasswordEncoderListener)
+    userBatteryUpdateListener(UserBatteryUpdateListener)
 }

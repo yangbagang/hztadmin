@@ -121,10 +121,10 @@
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> 设备管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a class="ajax-link" href="${createLink(uri: '/userBattery')}">绑定设备</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/batterySystem')}">电池系统</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/DCSystem')}">UPS系统</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/UPSSystem')}">直流系统</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/deviceCatalog')}">分类管理</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/deviceValueItem')}">设备参数</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/deviceInfo')}">设备信息</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/warningMsg')}">告警信息</a></li>
                             </ul>
                         </li>
                     </ul>
