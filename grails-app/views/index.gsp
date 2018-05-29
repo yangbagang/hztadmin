@@ -112,6 +112,13 @@
                         </li>
                         </sec:access>
                         <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-user"></i><span> 参数设置</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a class="ajax-link" href="${createLink(uri: '/deviceCatalog')}">分类管理</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/deviceValueItem')}">设备参数</a></li>
+                            </ul>
+                        </li>
+                        <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> 用户管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a class="ajax-link" href="${createLink(uri: '/userInfo')}">用户管理</a></li>
@@ -121,8 +128,6 @@
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-user"></i><span> 设备管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a class="ajax-link" href="${createLink(uri: '/deviceCatalog')}">分类管理</a></li>
-                                <li><a class="ajax-link" href="${createLink(uri: '/deviceValueItem')}">设备参数</a></li>
                                 <li><a class="ajax-link" href="${createLink(uri: '/deviceInfo')}">设备信息</a></li>
                                 <li><a class="ajax-link" href="${createLink(uri: '/warningMsg')}">告警信息</a></li>
                             </ul>
