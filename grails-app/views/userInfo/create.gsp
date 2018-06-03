@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group">
-            <label for="password">密码</label>
+            <label for="password">密码(不小于6位)</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="密码">
         </div>
 
