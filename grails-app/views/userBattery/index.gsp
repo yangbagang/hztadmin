@@ -107,7 +107,7 @@
                 '<form id="infoForm" role="form">' +
                 '<div class="form-group">' +
                 '<label for="mobile">用户手机号</label>' +
-                '<input type="number" class="form-control" id="mobile" name="mobile" placeholder="权限数字">' +
+                '<input type="number" class="form-control" id="mobile" name="mobile" placeholder="手机号">' +
                 '</div>' +
                 '<div class="form-group">' +
                 '<label for="uid">UID</label>' +

@@ -130,6 +130,7 @@
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a class="ajax-link" href="${createLink(uri: '/deviceInfo')}">设备信息</a></li>
                                 <li><a class="ajax-link" href="${createLink(uri: '/warningMsg')}">告警信息</a></li>
+                                <li><a class="ajax-link" href="${createLink(uri: '/userBattery')}">绑定设备</a></li>
                             </ul>
                         </li>
                     </ul>
